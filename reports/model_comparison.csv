@@ -1,0 +1,4 @@
+Model,Size (MB),Avg Inference Time (ms)
+PyTorch,15.61,34.14
+ONNX,0.59,8.57
+Quantized,15.58,34.96

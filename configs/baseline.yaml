@@ -1,0 +1,11 @@
+seed: 42
+batch_size: 32
+epochs: 2
+lr: 0.001
+model_name: 'baseline'
+splits_dir: 'data/splits'
+use_weighted_sampler: true
+use_focal_loss: false
+save_path: 'outputs/models/cnn_baseline.pth'
+project_name: 'csc4005-khmt16-01-skin-lesion-classification'
+patience: 5

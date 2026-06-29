@@ -1,0 +1,16 @@
+torch
+torchvision
+pandas
+numpy
+scikit-learn
+matplotlib
+seaborn
+wandb
+streamlit
+onnx
+onnxruntime
+opencv-python
+pillow
+pyyaml
+reportlab
+python-docx

@@ -1,0 +1,14 @@
+seed: 42
+batch_size: 32
+epochs_phase1: 2
+lr_phase1: 0.001
+epochs_phase2: 3
+lr_phase2: 0.0001
+model_name: 'efficientnet'
+metadata_csv: 'c:/DL/Project/skin-cancer-mnist-ham10000/HAM10000_metadata.csv'
+images_dir: 'c:/DL/Project/skin-cancer-mnist-ham10000'
+use_weighted_sampler: false
+use_focal_loss: true
+save_path: 'outputs/models/efficientnet_best.pth'
+project_name: 'csc4005-khmt16-01-skin-lesion-classification'
+patience: 5
