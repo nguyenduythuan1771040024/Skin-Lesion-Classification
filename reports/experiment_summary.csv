@@ -1,6 +1,10 @@
 Run,Model,Key Setting,Validation Metric (F1),Test Metric (F1)
 Run 1,Baseline CNN,"Weighted Sampler, CE Loss",0.45,0.43
-Run 2,EfficientNet-B0,"Phase 1 (Freeze) & Phase 2 (Fine-tune), CE Loss",0.78,0.76
+Run 2,EfficientNet-B0,"Phase 1 & 2, CE Loss",0.78,0.76
 Run 3,EfficientNet-B0 (Tuned),"Phase 1 & 2, Focal Loss (gamma=3)",0.82,0.81
-Run 4,DenseNet121,"Phase 1 & 2, Focal Loss (gamma=2)",0.80,0.79
-Run 5,Best Model (EfficientNet),"Tuned hyperparams, Focal Loss + Inv Freq Weights",0.83,0.82
+Run 4,DenseNet121 (Baseline),"Phase 1 & 2, Focal Loss (gamma=2)",0.80,0.79
+Run 5,Best Model (Old),"Tuned hyperparams, Focal Loss + Inv Freq Weights",0.83,0.82
+Run 6,EfficientNet-B0,"Data Leakage (Image-level split)",0.786,0.803
+Run 7,EfficientNet-B0,"Leak-free split, DullRazor, Class weights",0.647,0.630
+Run 8,EfficientNet-B0 (Final),"ISIC Augmented, Focal Loss fixed, DullRazor",0.711,0.710
+Run 9,DenseNet121 (Final),"ISIC Augmented, Focal Loss fixed, DullRazor",0.706,0.721

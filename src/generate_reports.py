@@ -212,13 +212,45 @@ This document logs all training runs conducted during the development of the ski
 - **Test result**: F1 = 0.79
 - **Nhận xét**: Comparable performance to EfficientNet-B0, but model size is larger and inference time is slightly slower.
 
-### Run 5: Best Model (Final)
+### Run 5: Best Model (Old)
 - **Model**: EfficientNet-B0
 - **Dataset split**: Stratified (70/15/15)
 - **Key hyperparameters**: Optimized hyperparams, Focal Loss + Inverse Frequency weights
 - **Validation result**: F1 = 0.83
 - **Test result**: F1 = 0.82
-- **Nhận xét**: Best trade-off between model size, inference speed, and classification metrics.
+- **Nhận xét**: Best trade-off between model size, inference speed, and classification metrics before data leakage check.
+
+### Run 6: EfficientNet-B0 (Standard Split)
+- **Model**: EfficientNet-B0
+- **Dataset split**: Image-level Stratified Split (Data Leakage)
+- **Key hyperparameters**: lr_phase1=1e-3, lr_phase2=1e-4, Focal Loss + Sampler + DullRazor
+- **Validation result**: F1 = 0.786
+- **Test result**: F1 = 0.803
+- **Nhận xét**: Artificially inflated metrics due to data leakage (same patient lesions present in both train and test splits).
+
+### Run 7: EfficientNet-B0 (Leak-free split)
+- **Model**: EfficientNet-B0
+- **Dataset split**: Group-Stratified Split by lesion_id (No Leakage)
+- **Key hyperparameters**: lr_phase1=1e-3, lr_phase2=1e-4, Focal Loss + Sampler + DullRazor
+- **Validation result**: F1 = 0.647
+- **Test result**: F1 = 0.630
+- **Nhận xét**: True baseline after correcting data leakage. F1 drop is expected and reflects honest generalization ability.
+
+### Run 8: EfficientNet-B0 (Final)
+- **Model**: EfficientNet-B0
+- **Dataset split**: Group-Stratified Split by lesion_id + ISIC Augmented (No Leakage)
+- **Key hyperparameters**: lr_phase1=1e-3, lr_phase2=1e-4, Focal Loss (fixed alpha weight) + Sampler + DullRazor
+- **Validation result**: F1 = 0.711
+- **Test result**: F1 = 0.710
+- **Nhận xét**: Drastic improvement (+8.0% F1) achieved by balancing minority classes with ISIC data and correcting Focal Loss class weights.
+
+### Run 9: DenseNet121 (Comparison)
+- **Model**: DenseNet121
+- **Dataset split**: Group-Stratified Split by lesion_id + ISIC Augmented (No Leakage)
+- **Key hyperparameters**: lr_phase1=1e-3, lr_phase2=1e-4, Focal Loss + Sampler + DullRazor
+- **Validation result**: F1 = 0.706
+- **Test result**: F1 = 0.721
+- **Nhận xét**: Achieves slightly higher F1-score (+1.1%) than EfficientNet-B0, but requires double the parameters and runs slower on CPU.
 """
     with open('reports/experiment_log.md', 'w', encoding='utf-8') as f:
         f.write(content)
