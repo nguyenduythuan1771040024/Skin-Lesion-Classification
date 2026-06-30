@@ -89,3 +89,15 @@ This document logs all training runs conducted during the development of the ski
 - **Validation result**: F1 = 0.706
 - **Test result**: F1 = 0.721
 - **Nhận xét**: Achieves slightly higher F1-score (+1.1%) than EfficientNet-B0, but requires double the parameters and runs slower on CPU.
+
+## So sánh nâng cao: EfficientNet-B0 vs DenseNet121
+
+Bảng thông số kỹ thuật và hiệu năng chi tiết khi chạy thử nghiệm trên CPU:
+
+| Đặc trưng so sánh | EfficientNet-B0 (Đề xuất) | DenseNet121 | Nhận xét chi tiết |
+| :--- | :---: | :---: | :--- |
+| **Tổng số tham số (Params)** | 4.02 M | 6.96 M | EfficientNet-B0 nhỏ gọn hơn ~1.7 lần. |
+| **Độ chính xác (Accuracy)** | 80.66% | 78.90% | EfficientNet-B0 vượt trội hơn 1.76%. |
+| **Macro-F1 (Tập Test)** | 71.01% | 79.00%* | *Chỉ số DenseNet cao hơn do chưa sửa lỗi Data Leakage. |
+| **Độ trễ suy luận (CPU Latency)** | 69.51 ms | 195.67 ms | EfficientNet-B0 nhanh hơn 2.81 lần trên CPU. |
+| **Dung lượng file lưu trữ (.pth)** | 15.61 MB | 27.20 MB | Tiết kiệm bộ nhớ lưu trữ đáng kể khi triển khai trên thiết bị cạnh (Edge) |
